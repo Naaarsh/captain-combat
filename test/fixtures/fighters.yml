@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  life: 
-  attack: 
-  dodge: 
-  critical: 
-  bio: MyText
+  name: Michel
+  life: 0
+  attack: 0 
+  dodge: 0
+  critical: 0 
+  bio: Michel aime manger des fraises
 
 two:
-  name: MyString
-  life: 
-  attack: 
-  dodge: 
-  critical: 
-  bio: MyText
+  name: Pierre
+  life: 10
+  attack: 11
+  dodge: 0
+  critical: 0 
+  bio: Pierre préfère cependant les oranges

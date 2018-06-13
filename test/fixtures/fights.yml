@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: 
+  history: "test"
   winner_id: 1
-  looser_id: 1
+  looser_id: 2
 
 two:
-  text: 
+  history: "test2"
   winner_id: 1
-  looser_id: 1
+  looser_id: 2
