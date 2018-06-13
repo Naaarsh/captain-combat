@@ -1,0 +1,27 @@
+<%= form_for(fight) do |f| %>
+  <% if fight.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fight.errors.count, "error") %> prohibited this fight from being saved:</h2>
+
+      <ul>
+      <% fight.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= select_tag "one[fighter_id]", options_for_select(@fighters.map {|f| [f.name, f.id]}), class: "form-control" %>
+    </div>
+
+    <div class="col-md-6">
+      <%= select_tag "two[fighter_id]", options_for_select(@fighters.map {|f| [f.name, f.id]}), class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
