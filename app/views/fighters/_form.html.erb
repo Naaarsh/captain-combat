@@ -20,22 +20,22 @@
 
   <div class="field m-t-5">
     <%= f.label :life %>
-    <%= f.number_field :life, max: 10, min: 0, placeholder: 0, class: "form-control" %>
+    <%= f.number_field :life, value: @fighter.life || 0, in: 0..10, placeholder: 0, class: "form-control" %>
   </div>
 
   <div class="field m-t-5">
     <%= f.label :attack %>
-    <%= f.number_field :attack, max: 10, min: 0, placeholder: 0, class: "form-control" %>
+    <%= f.number_field :attack, value: @fighter.attack || 0, in: 0..10, placeholder: 0, class: "form-control" %>
   </div>
 
   <div class="field m-t-5">
     <%= f.label :dodge %>
-    <%= f.number_field :dodge, max: 10, min: 0, placeholder: 0, class: "form-control" %>
+    <%= f.number_field :dodge, value: @fighter.dodge || 0, in: 0..10, placeholder: 0, class: "form-control" %>
   </div>
 
   <div class="field m-t-5">
     <%= f.label :critical %>
-    <%= f.number_field :critical, max: 10, min: 0, placeholder: 0, class: "form-control" %>
+    <%= f.number_field :critical, value: @fighter.critical || 0, in: 0..10, placeholder: 0, class: "form-control" %>
   </div>
 
   <div class="field m-t-5">
@@ -44,6 +44,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'And a Fighter is Born!', class: "btn btn-primary m-t-15" %>
+    <%= f.submit 'A Fighter is Born!', class: "btn btn-primary m-t-15" %>
   </div>
 <% end %>
