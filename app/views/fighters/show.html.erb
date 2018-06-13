@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name</strong>
+  <div>
+    <%= @fighter.name %>    
+  </div>
+</p>
+
+<p>
+  <strong>Life</strong>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%= @fighter.life * 10 %>%;">
+      <%= @fighter.life %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <strong>Attack</strong>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%= @fighter.attack * 10 %>%;">
+      <%= @fighter.attack %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <strong>Dodge Chances</strong>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-sucess" role="progressbar" style="width: <%= @fighter.dodge * 10 %>%;">
+      <%= "#{@fighter.dodge * 10} %" %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <strong>Critical Chances</strong>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: <%= @fighter.critical * 10 %>%;">
+      <%= "#{@fighter.critical * 5} %" %>
+    </div>
+  </div>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <div>
+    <%= @fighter.bio %>
+  </div>
+</p>
+
+<%= link_to 'Edit', edit_fighter_path(@fighter) %> |
+<%= link_to 'Back', fighters_path %>
