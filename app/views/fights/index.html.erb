@@ -2,9 +2,11 @@
 
 <h1>Fights</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th>First Fighter</th>
+      <th>Second Fighter</th>
       <th>Winner</th>
       <th>Looser</th>
       <th></th>
@@ -12,11 +14,17 @@
   </thead>
 
   <tbody>
-    <% @fights.each do |fight| %>
+    <% @fights.each do |f| %>
       <tr>
-        <td><%= fight.winner_id %></td>
-        <td><%= fight.looser_id %></td>
-        <td><%= link_to 'Show', fight %></td>
+        <td><%= Fighter.find(f.fighter_one_id).name %></td>
+        <td><%= Fighter.find(f.fighter_two_id).name %></td>
+        <td><%= Fighter.find(f.winner_id).name %></td>
+        <td><%= Fighter.find(f.looser_id).name %></td>
+        <td>
+          <%= link_to f do %>
+            <i class="zmdi zmdi-eye"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

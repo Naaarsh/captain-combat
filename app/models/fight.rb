@@ -2,6 +2,12 @@ class Fight < ApplicationRecord
   has_one :fighter_one, class_name: 'Fighter', foreign_key: 'fighter_one_id'
   has_one :fighter_two, class_name: 'Fighter', foreign_key: 'fighter_two_id'
 
+  validate :not_the_same_fighter
+
+  def not_the_same_fighter
+      errors.add(:fight, "can't have a fighter fiightting against himself") if fighter_one_id == fighter_two_id
+  end
+
   private
   
   def self.fight_between(f_one, f_two)
@@ -31,44 +37,44 @@ class Fight < ApplicationRecord
 
     ### Create Fight Result and History
     r = Random.new
-    history = "Fight Between #{f1.name} and #{f2.name}\n"
+    history = "Fight Between #{f1.name} and #{f2.name}"
     while (stats_one[:life] > 0 && stats_two[:life] > 0)
       ## Fighter One Turn
       ad = stats_one[:attack]
-      history += "\n#{f1.name} is attacking for #{ad} damage!"
+      history += "|#{f1.name} is attacking for #{ad} damage!"
 
       if (r.rand(0..100) <= stats_one[:critical])
         ad *= 2
-        history += "\nIt's a critical hit ! It'll deal double damage (#{ad})"
+        history += "|It's a critical hit ! It'll deal double damage (#{ad})"
       end
 
       if (r.rand(0..100) <= stats_two[:dodge])
-        history += "\n#{f2.name} dodges the attack with a magnificent sidestep !"
+        history += "|#{f2.name} dodges the attack with a magnificent sidestep !"
       else
         stats_two[:life] -= ad
-        history += "\n#{f2.name} suffers the loss of #{ad} life points !"
+        history += "|#{f2.name} suffers the loss of #{ad} life points !"
       end
 
       break if stats_two[:life] <= 0
 
       ## Fighter One Turn
       ad = stats_two[:attack]
-      history += "\n#{f2.name} is attacking for #{ad} damage!"
+      history += "|#{f2.name} is attacking for #{ad} damage!"
 
       if (r.rand(0..100) <= stats_two[:critical])
         ad *= 2
-        history += "\nIt's a critical hit ! It'll deal double damage (#{ad})"
+        history += "|It's a critical hit ! It'll deal double damage (#{ad})"
       end
 
       if (r.rand(0..100) <= stats_two[:dodge])
-        history += "\n#{f1.name} dodges the attack with a magnificent sidestep !"
+        history += "|#{f1.name} dodges the attack with a magnificent sidestep !"
       else
         stats_one[:life] -= ad
-        history += "\n#{f1.name} suffers the loss of #{ad} life points !"
+        history += "|#{f1.name} suffers the loss of #{ad} life points !"
       end
     end
 
-    history += "\nThe fight is over ! Congratulation to our two fighters : #{f1.name} and #{f2.name}"
+    history += "|The fight is over ! Congratulation to our two fighters : #{f1.name} and #{f2.name}"
 
     if stats_one[:life] <= 0
       winner = f2
@@ -78,7 +84,7 @@ class Fight < ApplicationRecord
       looser = f2
     end
 
-    history += "\n\nAnd the winner is... #{winner.name} !!"
+    history += "|And the winner is... #{winner.name} !!"
 
     return {
       winner_id: winner.id,

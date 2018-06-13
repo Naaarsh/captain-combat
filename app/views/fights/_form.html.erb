@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <label>Fighters</label>
   <div class="row">
     <div class="col-md-6">
       <%= select_tag "one[fighter_id]", options_for_select(@fighters.map {|f| [f.name, f.id]}), class: "form-control" %>
@@ -21,7 +22,7 @@
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions ta-center">
+    <%= f.submit 'Reaaaaaady ? Fight !!', class: "btn btn-danger m-t-15" %>
   </div>
 <% end %>

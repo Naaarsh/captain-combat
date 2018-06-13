@@ -1,18 +1,71 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @fight.history %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Winner</h3>
+    <h4><%= @winner.name %></h4>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%= @winner.life * 10 %>%;">
+        <%= @winner.life %>
+      </div>
+    </div>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%= @winner.attack * 10 %>%;">
+        <%= @winner.attack %>
+      </div>
+    </div>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= @winner.dodge * 10 %>%;">
+        <%= "#{@winner.dodge * 10} %" %>
+      </div>
+    </div>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: <%= @winner.critical * 10 %>%;">
+        <%= "#{@winner.critical * 5} %" %>
+      </div>
+    </div>
+    <div class="ta-center">
+      <%= link_to 'Show Winner', @winner %>
+    </div>
+  </div>
 
-<p>
-  <strong>Winner:</strong>
-  <%= @fight.winner_id %>
-</p>
+  <div class="col-md-6">
+    <h3>Looser</h3>
+    <h4><%= @looser.name %></h4>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: <%= @looser.life * 10 %>%;">
+        <%= @looser.life %>
+      </div>
+    </div>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%= @looser.attack * 10 %>%;">
+        <%= @looser.attack %>
+      </div>
+    </div>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= @looser.dodge * 10 %>%;">
+        <%= "#{@looser.dodge * 10} %" %>
+      </div>
+    </div>
+    <div class="progress m-t-10">
+      <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: <%= @looser.critical * 10 %>%;">
+        <%= "#{@looser.critical * 5} %" %>
+      </div>
+    </div>
+    <div class="ta-center">
+      <%= link_to 'Show Looser', @looser %>
+    </div>
+  </div>
 
-<p>
-  <strong>Looser:</strong>
-  <%= @fight.looser_id %>
-</p>
+  <div class="col-md-12 m-t-20">
+    <h3>Recap:</h3>
+    <div>
+      <% @fight.history.split('|').each do |sentence| %>
+        <%= sentence %>
+        </br>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Back', fights_path %>

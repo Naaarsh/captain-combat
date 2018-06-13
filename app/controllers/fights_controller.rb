@@ -10,20 +10,21 @@ class FightsController < ApplicationController
   # GET /fights/1
   # GET /fights/1.json
   def show
+    @winner = Fighter.find(@fight.winner_id)
+    @looser = Fighter.find(@fight.looser_id)
   end
 
   # GET /fights/new
   def new
-    @fight = Fight.new
     @fighters = Fighter.all
+    @fight = Fight.new
   end
 
   # POST /fights
   # POST /fights.json
   def create
-    tmp = Fight.fight_between(params[:one], params[:two])
-    puts tmp
-    @fight = Fight.create(tmp)
+    @fighters = Fighter.all
+    @fight = Fight.create(Fight.fight_between(params[:one], params[:two]))
 
     respond_to do |format|
       if @fight.save
@@ -41,6 +42,4 @@ class FightsController < ApplicationController
     def set_fight
       @fight = Fight.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
 end
